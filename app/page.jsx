@@ -196,9 +196,11 @@ export default function Home() {
           return msg;
         });
         const newMsgs = [...prevMsgs];
+        // Include the backend error message in the assistant reply so it's visible in the chat
+        const backendMsg = error?.message || (typeof error === 'string' ? error : 'Unknown error');
         newMsgs[idx] = {
           role: "assistant",
-          content: "[Error contacting AI service]",
+          content: `[Error contacting AI service] ${backendMsg}`,
           reasoning: ""
         };
         return newMsgs.map(msg => {
