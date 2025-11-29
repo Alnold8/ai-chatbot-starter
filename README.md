@@ -78,6 +78,39 @@ You need to install EdgeOne CLI globally and follow the official steps to run lo
 
 ---
 
+### Dev workflow (quick start)
+
+Use these commands to run the frontend and the EdgeOne functions together locally. Open two terminals.
+
+1) Install dependencies and start the Next.js frontend (Terminal A):
+
+```powershell
+npm.cmd install
+npm.cmd run dev
+# Frontend: http://localhost:3000
+```
+
+2) Install and start EdgeOne functions (Terminal B). If you don't have the EdgeOne CLI yet:
+
+```powershell
+npm i -g edgeone
+# Then in the project root:
+npm run dev:functions
+# This runs `edgeone pages dev` and commonly serves functions at http://localhost:8088
+```
+
+3) Quick function health check (Terminal C or A/B):
+
+```powershell
+npm run exercise:functions
+# Posts to http://localhost:8088/api/models and prints the JSON response
+```
+
+Notes:
+- `next.config.js` contains a development rewrite: `/api/*` is proxied to `http://localhost:8088/api/*` so the frontend can call `/api/ai` without code changes.
+- Set provider API keys in EdgeOne environment to call real providers: `DEEPSEEK_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`, `CLAUDE_API_KEY`, `NEBIUS_API_KEY`.
+
+
 Feel free to open an issue or PR if you have questions or suggestions!
 
 ## License
