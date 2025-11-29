@@ -7,6 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "dev:functions": "node ./scripts/edgeone-run.js",
+    "edgeone:init": "edgeone pages init",
+    "edgeone:link": "edgeone pages link",
+  "exercise:functions": "node ./scripts/exercise-api.js",
     "export": "next export"
   },
   "dependencies": {
